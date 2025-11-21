@@ -1,11 +1,12 @@
-apps:
-  build: ./src/
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-    - /etc/hosts:/host_hosts
-    - ./src:/home/user/application
-  hostname: containers
-  domainname: domg
-  environment:
-    HOSTNAME: "containers.local.dev"
-    PYTHONUNBUFFERED: 1
+services:
+  domg:
+    build: ./src/
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/hosts:/host_hosts
+#      - .:/home/user/application
+    hostname: containers
+    domainname: domg
+    environment:
+      HOSTNAME: "containers.local.dev"
+      PYTHONUNBUFFERED: 1

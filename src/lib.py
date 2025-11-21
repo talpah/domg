@@ -90,6 +90,7 @@ class FlashMsgPlugin(object):
         self.key = key
         self.app = None
         self.secret = secret
+        self.keyword = 'flash'
 
     def setup(self, app):
         """ Make sure that other installed plugins don't affect the same
@@ -198,8 +199,8 @@ class Hosts(object):
 
     def load(self, contents):
         for line in contents.split('\n'):
-            if len(re.sub('\s*', '', line)) and not line.startswith('#'):
-                parts = re.split('\s+', line)
+            if len(re.sub(r'\s*', '', line)) and not line.startswith('#'):
+                parts = re.split(r'\s+', line)
                 ip_address = parts[0]
                 for host_name in parts[1:]:
                     self.hosts[host_name] = ip_address
